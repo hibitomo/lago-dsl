@@ -16,4 +16,4 @@ $ ./lago-dsl.py flow bridge01
 
 ### lagopus DSL syntax
   - See https://github.com/lagopus/lagopus/blob/master/docs/how-to-use-ds-flow-cmd.md
-
+  - See http://lagopus.github.io/lagopus-book/en/html/datastore.html#configurable-objects-and-dsl-syntax
