@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 import sys
 import getopt
 import socket
@@ -27,16 +28,23 @@ def usage():
 if __name__ == "__main__":
 
     ds_client.port = 12345
+    dsl_list = []
 
-    cmd = ''
-    for word in sys.argv[1:]:
-        cmd += word + ' '
-    cmd += '\n'
+    if os.path.isfile("/dev/stdin"):
+        for line in open('/dev/stdin','r'):
+            dsl_list.append(line)
+    else:
+        cmd = ''
+        for word in sys.argv[1:]:
+            cmd += word + ' '
+        cmd += '\n'
+        dsl_list.append(cmd)
 
-    try:
-        print ds_client().call(cmd)
-    except socket.error:
-        print 'Socket connection refused.  Lagopus is not running?'
-    except DSLError as e:
-        print e.value
+    for cmd in dsl_list :
+      try:
+          print ds_client().call(cmd)
+      except socket.error:
+          print 'Socket connection refused.  Lagopus is not running?'
+      except DSLError as e:
+          print e.value
 
