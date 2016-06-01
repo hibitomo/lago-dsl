@@ -8,6 +8,13 @@ You can add/modify/delete/dump flows without OpenFlow controller.
 $ ./lago-dsl.py [lagopus DSL]
 ```
 
+or
+
+```
+$ ./lago-dsl.py < [lagopus DSL file]
+```
+
+
 - sample
 ```
 $ ./lago-dsl.py flow bridge01
